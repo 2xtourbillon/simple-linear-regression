@@ -6,6 +6,9 @@ authors = ["Gurgen Verdian <gurgen.verdian@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+sklearn = "^0.0"
+pandas = "^1.4.1"
+ipykernel = "^6.9.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
