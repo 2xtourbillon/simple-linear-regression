@@ -38,9 +38,43 @@ def model_train(X_train, y_train, X_test, y_test):
 
     y_pred = lin_regressor.predict(X_test1)
 
-    return y_pred
+    return y_pred, lin_regressor
 
-y_pred = model_train(X_train, y_train, X_test, y_test)
+y_pred, lin_regressor = model_train(X_train, y_train, X_test, y_test)
+
+def model_pred():
+    global X_train, y_train, X_test, y_test, window
+
+    # training regressor
+    X_train1 = np.reshape(X_train, (-1, 1))
+    y_train1 = np.reshape(y_train, (-1, 1))
+
+    # X_test1 = np.reshape(X_test, (-1, 1))
+    # y_test1 = np.reshape(y_test, (-1, 1))
+    
+    lin_regressor = LinearRegression()
+    lin_regressor.fit(X_train1, y_train1)
+
+    # user input area value
+    area1 = entry.get()
+    area = int(area1)
+    tran_area = np.array([[area]])
+
+    # running prediction
+    pred_price = lin_regressor.predict(tran_area)
+    pred_price = str(pred_price)
+    print(pred_price)
+
+    # add the pred_price to the window
+    label1 = Label(window, text=pred_price, fg='red', font='Courier 25')
+    label1.pack()
+
+    # delete the entry
+    entry.delete(0, END)
+
+
+# y_pred, lin_regressor = model_train(X_train, y_train, X_test, y_test)
+
 
 # initialize tkinter window
 window = Tk()
