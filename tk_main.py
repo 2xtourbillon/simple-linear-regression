@@ -45,9 +45,19 @@ y_pred = model_train(X_train, y_train, X_test, y_test)
 # initialize tkinter window
 window = Tk()
 window.geometry('600x700')
+window.title('Template Window')
+label = Label(window, text="Enter the Area of the Land in '000 sqft", fg='red', font='Courier 15')
+label.pack()
 
+# Area entry field
+area = StringVar()
+area.set('')
+entry = Entry(window, textvariable=area, fg='green', width=10, font='Courier 15')
+entry.pack()
 
-
+# Prediction button
+pred_button = Button(window, text='Predict', fg='red', command=model_pred, height=2, width=15)
+pred_button.pack()
 
 
 
